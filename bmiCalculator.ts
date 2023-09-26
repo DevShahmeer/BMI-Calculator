@@ -1,12 +1,11 @@
-// Define a function to calculate BMI
+import * as readline from 'readline';
+
 function calculateBMI(height: number, weight: number): number {
-  // BMI formula: weight (kg) / (height (m))^2
-  const heightInMeters = height / 100; // Convert height to meters
+  const heightInMeters = height / 100;
   const bmi = weight / (heightInMeters * heightInMeters);
   return parseFloat(bmi.toFixed(2));
 }
 
-// Function to categorize BMI
 function getBMICategory(bmi: number): string {
   if (bmi < 18.5) {
     return 'Underweight';
@@ -19,5 +18,19 @@ function getBMICategory(bmi: number): string {
   }
 }
 
-$ git config --global user.name "shahmeer"
-$ git config --global user.email theshahmeerfsd@gmail.com
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function getUserInput(): Promise<{ height: number; weight: number }> {
+  return new Promise((resolve, reject) => {
+    rl.question('Enter your height in cm: ', (height) => {
+      rl.question('Enter your weight in kg: ', (weight) => {
+        resolve({ height: parseFloat(height), weight: parseFloat(weight) });
+        rl.close();
+      });
+    });
+  });
+}
+
