@@ -11,7 +11,6 @@ A simple BMI (Body Mass Index) calculator web application built using TypeScript
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
